@@ -1,55 +1,63 @@
 main {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #dive-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 13px;
-    box-shadow: 7px 6px 13px 0px rgba(0,0,0,0.2);
-    border-color: #000000;
-    width: 55vw;
-    height:auto;
-    padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border-radius: 13px;
+  box-shadow: 7px 6px 13px 0px rgba(0, 0, 0, 0.2);
+  border-color: var(--border-color); */
+  width: 55vw;
+  /* height: auto; */
+  /* padding: 2rem; */
+}
+
+#dive-container,
+textarea {
+  border-radius: 13px;
+  box-shadow: 7px 6px 13px 0px rgba(0, 0, 0, 0.2);
+  border-color: var(--border-color);
 }
 
 textarea {
-    width: 45vw;
+  width: 40vw;
+  padding: 1rem;
 }
 
 #diver-btn-container {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 #jj0 {
-    margin-top: 1rem;
-    font-size: 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
-.unknown-word, .known-word, .in-deck-word {
-    font-size: 1.1rem;
+.unknown-word,
+.known-word,
+.in-deck-word {
+  font-size: 1.1rem;
 }
 
 .kanji-displayed {
-    margin-top: 2rem;
-    font-size: 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }
 
 .kana-displayed {
-    font-size: 1.3rem;
-    font-style: italic;
-    margin-bottom: 2rem;
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-bottom: 2rem;
 }
 
 .defineej {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .def-button-container {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
-
-

@@ -108,13 +108,13 @@ def def_builder(req, kana, text, type, depth, user):
                     <br><br>
                     <span class="define{type}" data-depth="{depth}">{text}</span>
                     <div class="def-button-container" data-btndepth="{depth}">
-                        <button class="switch-dict" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
+                        <button class="switch-dict button-color" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
                         <br>
-                        <button onclick="add_user_def('{req}', '{type}{depth}', '{type}', 'empty')">Add user definition</button>
+                        <button class="button-color onclick="add_user_def('{req}', '{type}{depth}', '{type}', 'empty')">Add user definition</button>
                         <br>
-                        <button onclick="add_user_token()">Add user token</button>
+                        <button class="button-color" onclick="add_user_token()">Add user token</button>
                         <br>
-                        <button onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
+                        <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                     </div>
                 </div>
                 """
@@ -142,15 +142,15 @@ def def_builder(req, kana, text, type, depth, user):
         analyzed_text.append(
             f"""
                     <div class="def-button-container" data-btndepth="{depth}">
-                        <button class="add-card" onclick="add_card('{req}', '{depth}', 'ej')">Add to flash cards</button</button>
+                        <button class="add-card button-color" onclick="add_card('{req}', '{depth}', 'ej')">Add to flash cards</button</button>
                         <br>
-                        <button class="switch-dict" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
+                        <button class="switch-dict button-color" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
                         <br>
-                        <button onclick="add_user_def('{req}', '{type}{depth}', '{type}', '')">Add user definition</button>
+                        <button class="button-color" onclick="add_user_def('{req}', '{type}{depth}', '{type}', '')">Add user definition</button>
                         <br>
-                        <button onclick="add_user_token()">Add user token</button>
+                        <button class="button-color" onclick="add_user_token()">Add user token</button>
                         <br>
-                        <button onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
+                        <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                     </div>
                 </div>
                 """
@@ -202,9 +202,9 @@ def def_builder(req, kana, text, type, depth, user):
                     <span class="dropdown-text" {left} id="txtmenu{depth}{i}" data-word="{word}">
                         <span class="close" onclick="closeup('txtmenu{depth}{i}', '{word}')">&times;</span>
                         <span class="menu-kana">{furigana}</span>
-                        <button onclick="swap_word('{word}', 'unknown'); closeup('txtmenu{depth}{i}', '{word}')">Mark Known</button>
-                        <button onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'null', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
-                        <button onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'null', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
+                        <button class="button-color" onclick="swap_word('{word}', 'unknown'); closeup('txtmenu{depth}{i}', '{word}')">Mark Known</button>
+                        <button class="button-color" onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'null', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
+                        <button class="button-color" onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'null', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
                     </span>
                 </span>
                 """)
@@ -222,10 +222,10 @@ def def_builder(req, kana, text, type, depth, user):
                     <span class="dropdown-text" {left} id="txtmenu{depth}{i}" data-word="{word}">
                         <span class="close" onclick="closeup('txtmenu{depth}{i}', '{word}');">&times;</span>
                         <span class="menu-kana">{furigana}</span>
-                        <button onclick="swap_word('{word}', 'in-deck-to-known'); closeup('txtmenu{depth}{i}', '{word}')">Mark known</button>
-                        <button onclick="swap_word('{word}', 'in-deck-to-unknown'); closeup('txtmenu{depth}{i}', '{word}')">Mark Unknown</button>
-                        <button onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
-                        <button onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
+                        <button class="button-color" onclick="swap_word('{word}', 'in-deck-to-known'); closeup('txtmenu{depth}{i}', '{word}')">Mark known</button>
+                        <button class="button-color" onclick="swap_word('{word}', 'in-deck-to-unknown'); closeup('txtmenu{depth}{i}', '{word}')">Mark Unknown</button>
+                        <button class="button-color" onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
+                        <button class="button-color" onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
                     </span>
                 </span>
                 """)
@@ -244,9 +244,9 @@ def def_builder(req, kana, text, type, depth, user):
                     <span class="dropdown-text" {left} id="txtmenu{depth}{i}" data-word="{word}">
                         <span class="close" onclick="closeup('txtmenu{depth}{i}', '{word}');">&times;</span>
                         <span class="menu-kana">{furigana}</span>
-                        <button onclick="swap_word('{word}', 'known'); closeup('txtmenu{depth}{i}', '{word}')">Mark Unknown</button>
-                        <button onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
-                        <button onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
+                        <button class="button-color" onclick="swap_word('{word}', 'known'); closeup('txtmenu{depth}{i}', '{word}')">Mark Unknown</button>
+                        <button class="button-color" onclick="search_jj('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">Japanese Lookup</button>
+                        <button class="button-color" onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'in-deck', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
                     </span>
                 </span>
                 """)
@@ -256,15 +256,15 @@ def def_builder(req, kana, text, type, depth, user):
         analyzed_text.append(
             f"""
                         <div class="def-button-container" data-btndepth="{depth}">
-                            <button class="add-card" onclick="add_card('{req}', '{depth}', 'jj')">Add to flash cards</button</button>
+                            <button class="add-card button-color" onclick="add_card('{req}', '{depth}', 'jj')">Add to flash cards</button</button>
                             <br>
-                            <button class="switch-dict" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
+                            <button class="switch-dict button-color" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
                             <br>
-                            <button onclick="add_user_def('{req}', '{type}{depth}', '{type}', '')">Add user definition</button>
+                            <button class="button-color" onclick="add_user_def('{req}', '{type}{depth}', '{type}', '')">Add user definition</button>
                             <br>
-                            <button onclick="add_user_token()">Add user token</button>
+                            <button class="button-color" onclick="add_user_token()">Add user token</button>
                             <br>
-                            <button onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
+                            <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                         </div>
                     </div>
             """

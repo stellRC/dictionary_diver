@@ -1,25 +1,32 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block diverstyle %}
+<link href="/static/diverstyle.css" rel="stylesheet" />
+{% endblock %} {% block main %}
+<div id="loading"><p>Loading ...</p></div>
+<div id="dive-container">
+  <h2>Dictionary Diver</h2>
 
-{% block diverstyle %}
-<link href="/static/diverstyle.css" rel="stylesheet">
+  <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50">
+通常、古代の末期に位置付けられるが、中世の萌芽期と位置づけることも可能であり、古代から中世への過渡期と理解されている。</textarea
+  >
+  <!-- <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50"></textarea> -->
+  <div id="diver-btn-container">
+    <button
+      class="text-in-button button-color"
+      onclick="main_text_request('parse')"
+    >
+      Analyze
+    </button>
+    <button
+      class="text-in-button button-color"
+      onclick="main_text_request('no-parse')"
+    >
+      Define
+    </button>
+  </div>
+
+  <div id="jj0" data-divdepth="0"></div>
+
+  <div class="dictionary-display"></div>
+</div>
+
 {% endblock %}
-
-{% block main %}
-<div id="loading"><p>Loading ... </p></div>
-    <div id="dive-container">
-        <h2>Dictionary Diver</h2>
-
-        <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50">通常、古代の末期に位置付けられるが、中世の萌芽期と位置づけることも可能であり、古代から中世への過渡期と理解されている。</textarea>
-        <!-- <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50"></textarea> -->
-        <div id="diver-btn-container">
-            <button class="text-in-button" onclick="main_text_request('parse')">Analyze</button>
-            <button class="text-in-button" onclick="main_text_request('no-parse')">Define</button>
-        </div>
-
-        <div id="jj0" data-divdepth="0"></div>
-
-        <div class="dictionary-display"></div>
-    </div>
-
-{% endblock %}
-
