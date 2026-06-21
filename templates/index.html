@@ -3,29 +3,34 @@
 {% endblock %} {% block main %}
 <div id="loading"><p>Loading ...</p></div>
 <div id="dive-container">
-  <h2>Dictionary Diver</h2>
+  <div class="input-container" id="input-container">
+    <h2>Dictionary Diver</h2>
 
-  <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50">
-通常、古代の末期に位置付けられるが、中世の萌芽期と位置づけることも可能であり、古代から中世への過渡期と理解されている。</textarea
-  >
-  <!-- <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50"></textarea> -->
-  <div id="diver-btn-container">
-    <button
-      class="text-in-button button-color"
-      onclick="main_text_request('parse')"
+    <textarea id="main-text-input" name="text-in" type="text">
+    通常、古代の末期に位置付けられるが、中世の萌芽期と位置づけることも可能であり、古代から中世への過渡期と理解されている。</textarea
     >
-      Analyze
-    </button>
-    <button
-      class="text-in-button button-color"
-      onclick="main_text_request('no-parse')"
-    >
-      Define
+
+    <!-- <textarea id="main-text-input" name="text-in" type="text" rows="6" cols="50"></textarea> -->
+    <div class="diver-buttons" id="diver-btn-container">
+      <button
+        class="text-in-button button-color"
+        onclick="main_text_request('parse')"
+      >
+        Analyze
+      </button>
+      <button
+        class="text-in-button button-color"
+        onclick="main_text_request('no-parse')"
+      >
+        Define
+      </button>
+    </div>
+    <button class="transform-button button-color" onclick="show_diver()">
+      New Dive
     </button>
   </div>
 
-  <div id="jj0" data-divdepth="0"></div>
-
+  <div class="analyzed-container" id="jj0" data-divdepth="0"></div>
   <div class="dictionary-display"></div>
 </div>
 
