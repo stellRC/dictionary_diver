@@ -265,6 +265,7 @@ async function search_jj(word, id, req_type, deck, click_depth) {
   });
   // highlight('', '', 'depth_click_fix', '');
   highlight(word, id, "lookup_on");
+
   window.scrollTo(0, document.body.scrollHeight);
 }
 

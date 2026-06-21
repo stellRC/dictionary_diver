@@ -95,7 +95,7 @@ a:not([class]) {
 
 /* Make sure textarea without a rows attribute are not tiny */
 textarea:not([rows]) {
-  min-height: 10em;
+  min-height: 6em;
 }
 
 /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */

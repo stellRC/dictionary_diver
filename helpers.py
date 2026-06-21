@@ -103,8 +103,8 @@ def rm_braces(text):
 def def_builder(req, kana, text, type, depth, user):
     if type == "jj-empty" or type == "ej-empty":
         message = f"""
-                <div id="{type}{depth}" data-divdepth="{depth}">
-                    <h2 class="kanji-displayed">{req}</h2>
+                <div id="{type}{depth}" class="dict-card" data-divdepth="{depth}">
+                    <h2 class="kanji-displayed dic-header">{req}</h2>
                     <br><br>
                     <span class="define{type}" data-depth="{depth}">{text}</span>
                     <div class="def-button-container" data-btndepth="{depth}">
@@ -123,7 +123,7 @@ def def_builder(req, kana, text, type, depth, user):
     analyzed_text = []
     if type == "ej":
         analyzed_text.append(
-            f"""<div id="{type}{depth}" data-divdepth="{depth}"><h2 class="kanji-displayed">{req}</h2>""")
+            f"""<div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><h2 class="kanji-displayed">{req}</h2>""")
         for definition in text:
             if definition['sound'] is None:
                 definition['sound'] = ''
@@ -160,7 +160,7 @@ def def_builder(req, kana, text, type, depth, user):
     # if type == "jj":
     if type == "jj":
         analyzed_text.append(
-            f'<div id="{type}{depth}" data-divdepth="{depth}"><br> <h2 class="kanji-displayed">{req}</h2><h3 class="kana-displayed">{kana}</h3>')
+            f'<div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><br> <h2 class="kanji-displayed">{req}</h2><h3 class="kana-displayed">{kana}</h3>')
 
     i = 0
     for word in text:
