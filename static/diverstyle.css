@@ -50,6 +50,11 @@ textarea {
   width: 80%;
 }
 
+.analyzed-container,
+.input-container {
+  background-color: var(--background-color);
+}
+
 .input-container.is-offscreen {
   position: sticky;
   top: 0;
@@ -83,10 +88,6 @@ textarea {
   opacity: 1 !important;
 }
 
-.dictionary-display {
-  padding: 1rem;
-}
-
 .diver-buttons {
   display: flex;
   flex-direction: row;
@@ -94,34 +95,158 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+.dictionary-container {
+  width: 50vw;
+}
+.dictionary-display {
+  padding: 1rem;
+  /* padding-top: 40px; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10rem;
+}
+
+/* Center branch */
+.branch-center {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1.5px;
+  background-color: var(--branch-color);
+  transform: translateX(-50%);
+  z-index: -100;
+}
+/* Node Cards */
+
+/* LEft-side card */
+.card-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  min-height: fit-content;
+}
+
+/* Right side card */
+.card-container:nth-child(even) {
+  justify-content: flex-end;
+}
+/* .card-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1.5px solid var(--branch-color);
+  width: 0;
+  height: 40px;
+} */
+
+.card-branch::before,
+.card-branch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1.5px solid var(--branch-color);
+  width: 29%;
+  height: 40px;
+}
+
+.card-branch::after {
+}
+
+/* Left Branch */
+.card-container:nth-child(odd) .card-branch::after {
+  right: 49%;
+  left: auto;
+  border-left: 1.5px solid var(--branch-color);
+}
+/* Right Branch */
+.card-container:nth-child(even) .card-branch::after {
+  right: auto;
+  left: 51%;
+  border-right: 1.5px solid var(--branch-color);
+}
+
+.card-branch:only-child::after,
+.card-branch:only-child::before {
+  display: none;
+}
+.card-branch:only-child {
+  padding-top: 0;
+}
+.card-branch:first-child::before,
+.card-branch:last-child::after {
+  border: 0 none;
+}
+.card-branch:last-child::before {
+  border-right: 1.5px solid var(--branch-color);
+  border-radius: 0 8px 0 0;
+}
+.card-branch:first-child::after {
+  /* border-radius: 8px 0 0 0; */
+}
 
 .dict-card {
+  background: rgba(22, 28, 38, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 16px;
   display: inline-block;
-  padding: 15px 20px;
-  margin: 5px;
-  background-color: #fdfaf6; /* Classic warm note card tone */
-  border: 1px solid #e1dcd6;
-  border-radius: 4px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.08);
-  font-family: "Courier New", Courier, monospace; /* Paper/note font */
-  min-width: 120px;
-  text-decoration: none;
-  color: #333;
+  min-width: 200px;
+  max-width: 350px;
   position: relative;
-  transition: all 0.2s ease-in-out;
+  z-index: 10;
+  margin-top: 1rem;
+  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.dict-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-color);
+  box-shadow:
+    0 0 0 2px rgba(16, 185, 129, 0.15),
+    0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
 /* Header text styling */
 .card-header {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1.25rem;
   font-weight: bold;
-  color: #333;
-  margin-top: -35px; /* Pulls header above the main rule line block */
-  margin-bottom: 35px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
+
+/* Hide content so only word and pronunciation are visible */
+.card-content {
+  /* display: none; */
+}
+
+.card-dot {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #0c0e12;
+  border: 2px solid var(--branch-color);
+  border-radius: 50%;
+  z-index: 30;
+}
+
+/* Card Type */
 
 .unknown-word,
 .known-word,
@@ -130,14 +255,14 @@ textarea {
 }
 
 .kanji-displayed {
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
   font-size: 1.5rem;
 }
 
 .kana-displayed {
   font-size: 1.3rem;
   font-style: italic;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .defineej {
@@ -146,4 +271,70 @@ textarea {
 
 .def-button-container {
   margin-top: 1rem;
+}
+
+/* bubbles */
+.button-color {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  background-color: var(--button-color);
+  box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 22px;
+  border-radius: 4px;
+}
+
+.button-color:focus {
+  outline-color: transparent;
+  box-shadow: var(--button-color) 2px 2px 22px;
+  /* display: none; */
+}
+
+.button-color::before {
+  content: "";
+  pointer-events: none;
+  opacity: 0.6;
+  background:
+    radial-gradient(
+      circle at 20% 35%,
+      transparent 0,
+      transparent 2px,
+      var(--text-color) 3px,
+      var(--text-color) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 75% 44%,
+      transparent 0,
+      transparent 2px,
+      var(--text-color) 3px,
+      var(--text-color) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 46% 52%,
+      transparent 0,
+      transparent 4px,
+      var(--text-color) 5px,
+      var(--text-color) 6px,
+      transparent 6px
+    );
+
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: bubbles 5s linear infinite both;
+}
+
+@keyframes bubbles {
+  from {
+    transform: translate();
+  }
+  to {
+    transform: translate(0, -66.666%);
+  }
 }

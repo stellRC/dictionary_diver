@@ -2,7 +2,7 @@
 <link href="/static/diverstyle.css" rel="stylesheet" />
 {% endblock %} {% block main %}
 <div id="loading"><p>Loading ...</p></div>
-<div id="dive-container">
+<section id="dive-container">
   <div class="input-container" id="input-container">
     <h2>Dictionary Diver</h2>
 
@@ -31,7 +31,10 @@
   </div>
 
   <div class="analyzed-container" id="jj0" data-divdepth="0"></div>
-  <div class="dictionary-display"></div>
-</div>
+  <div class="dictionary-container">
+    <div class="branch-center"></div>
+    <ul class="dictionary-display"></ul>
+  </div>
+</section>
 
 {% endblock %}

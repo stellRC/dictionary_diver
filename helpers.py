@@ -103,10 +103,13 @@ def rm_braces(text):
 def def_builder(req, kana, text, type, depth, user):
     if type == "jj-empty" or type == "ej-empty":
         message = f"""
-                <div id="{type}{depth}" class="dict-card" data-divdepth="{depth}">
+                <li class="card-branch"><div id="{type}{depth}" class="dict-card" data-divdepth="{depth}">
+                    <div class="card-dot"></div>
                     <h2 class="kanji-displayed dic-header">{req}</h2>
                     <br><br>
-                    <span class="define{type}" data-depth="{depth}">{text}</span>
+                    <div class="card-content">
+                        <span class="define{type}" data-depth="{depth}">{text}</span>
+                    </div>
                     <div class="def-button-container" data-btndepth="{depth}">
                         <button class="switch-dict button-color" onclick="switch_dict('{req}', '{type}{depth}', '{type}')">Switch dictionary</button>
                         <br>
@@ -116,26 +119,29 @@ def def_builder(req, kana, text, type, depth, user):
                         <br>
                         <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                     </div>
-                </div>
+                    </div>
+                </li>
                 """
         return message
 
     analyzed_text = []
     if type == "ej":
         analyzed_text.append(
-            f"""<div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><h2 class="kanji-displayed">{req}</h2>""")
+            f"""<li class="card-branch"><div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><div class="card-dot"></div><h2 class="kanji-displayed">{req}</h2>""")
         for definition in text:
             if definition['sound'] is None:
                 definition['sound'] = ''
             analyzed_text.append(
                 f"""
                         <h3 class="kana-displayed">{definition['sound'].replace(']', '').replace('[', '').replace('"', '')}</h3>
-                        <span class="define{type}" data-depth="{depth}">
+                        <div class="card-content">
+                        <span class="define{type}" data-depth="{depth}">{text}
                         {definition['definition'].
                          replace(']', '').replace('[', '').
                          replace(';  ","', ';<br>').replace(',', ', ').
                          replace('"', '')}
                         </span>
+                        </div>
                         <br><br>
                     """)
 
@@ -152,7 +158,8 @@ def def_builder(req, kana, text, type, depth, user):
                         <br>
                         <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                     </div>
-                </div>
+                    </div>
+                </li>
                 """
         )
         return analyzed_text
@@ -160,7 +167,7 @@ def def_builder(req, kana, text, type, depth, user):
     # if type == "jj":
     if type == "jj":
         analyzed_text.append(
-            f'<div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><br> <h2 class="kanji-displayed">{req}</h2><h3 class="kana-displayed">{kana}</h3>')
+            f'<li class="card-container"><div class="card-branch"></div><div id="{type}{depth}" class="dict-card" data-divdepth="{depth}"><div class="card-dot"></div><br> <h2 class="kanji-displayed">{req}</h2><h3 class="kana-displayed">{kana}</h3><div class="card-content">')
 
     i = 0
     for word in text:
@@ -192,6 +199,7 @@ def def_builder(req, kana, text, type, depth, user):
         if len(check) == 0:
             analyzed_text.append(
                 f"""
+                
                 <span class="unknown" >
                     <span id="txt{depth}{i}" class="unknown-word"
                         onclick="dropdown('{word}', 'txtmenu{depth}{i}', 'txt{depth}{i}')"
@@ -207,6 +215,7 @@ def def_builder(req, kana, text, type, depth, user):
                         <button class="button-color" onclick="search_ej('{word}', 'txt{depth}{i}', 'null', 'null', '{depth}'); closeup('txtmenu{depth}{i}', '{word}')">English Lookup</button>
                     </span>
                 </span>
+                
                 """)
         # If word in deck
         elif check[0]["status"] != 0:
@@ -254,7 +263,7 @@ def def_builder(req, kana, text, type, depth, user):
 
     if type == "jj":
         analyzed_text.append(
-            f"""
+            f"""    
                         <div class="def-button-container" data-btndepth="{depth}">
                             <button class="add-card button-color" onclick="add_card('{req}', '{depth}', 'jj')">Add to flash cards</button</button>
                             <br>
@@ -266,7 +275,9 @@ def def_builder(req, kana, text, type, depth, user):
                             <br>
                             <button class="button-color" onclick="go_back('{type}{depth}', '{req}')">Go back</button</button>
                         </div>
-                    </div>
+                        </div>
+                        </div>
+                    </li>
             """
         )
     return analyzed_text
@@ -274,7 +285,7 @@ def def_builder(req, kana, text, type, depth, user):
 
 def eng_card_def_builder(text):
     analyzed_text = []
-    analyzed_text.append(f"""<div id="definition"><br>""")
+    analyzed_text.append(f"""<li class="card-branch"><div id="definition"><br>""")
     for definition in text:
         if definition['sound'] is None:
             definition['sound'] = ''
@@ -290,7 +301,7 @@ def eng_card_def_builder(text):
                     <br><br>
                 """)
 
-    analyzed_text.append(f"""</div>""")
+    analyzed_text.append(f"""</div></li>""")
     return analyzed_text
 
 
